@@ -19,15 +19,25 @@
 	video{
 		vertical-align: middle;
 	}
+	body > div{
+		position: relative;
+	}
 	.video{
 		width: 100%;
 	}
-	.btn{
+	.btn1{
 		position:absolute;
 		top: 50%;
 		left:50%;
 		transform: translate(-50%,-50%);
-		background: #fcc;
+		background: yellow;
+	}
+	.btn2{
+		position:absolute;
+		top: 50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+		background: blue;
 	}
 	.music{
 		position: absolute;
@@ -45,13 +55,25 @@
 </head>
 
 <body>
-	<video id="video" class="video" preload="auto" webkit-playsinline="true" x5-video-player-fullscreen="true" playsinline src="video.mp4"></video>
-	<button class="btn" id="btn">点击观看</button>
+	<div>
+		<video id="video1" class="video" preload="auto" webkit-playsinline="true" x5-video-player-fullscreen="true" playsinline src="http://www.res.flyme.cn/resources/flymeos/v3/flyme6/animation/videoDesign/flymeUi.mp4?v=313eae54d1"></video>
+		<button class="btn1" id="btn1">点击播放1</button>
+	</div>
+	<div style="background: green;height:10px;"></div>
+	<div>
+		<video id="video2" class="video" preload="auto" webkit-playsinline="true" x5-video-player-fullscreen="true" playsinline src="http://www.res.flyme.cn/resources/flymeos/v3/flyme6/animation/videoDesign/flymeAbout.mp4?v=452f8b8598"></video>
+		<button class="btn2" id="btn2">点击播放2</button>
+	</div>
 	<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
 	<script>
 	$(function(){
-		$('#btn').on('click', function(){
-			$('#video')[0].play();
+		$('#btn1').on('click', function(){
+			$('#video1')[0].play();
+			$('#video2')[0].pause();
+		});
+		$('#btn2').on('click', function(){
+			$('#video1')[0].pause();
+			$('#video2')[0].play();
 		});
 
 
