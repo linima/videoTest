@@ -37,7 +37,7 @@
 		top: 50%;
 		left:50%;
 		transform: translate(-50%,-50%);
-		background: blue;
+		background: green;
 	}
 	.music{
 		position: absolute;
@@ -56,28 +56,43 @@
 
 <body>
 	<div>
-		<video id="video1" class="video" preload="auto" webkit-playsinline="true" x5-video-player-fullscreen="true" playsinline src="http://www.res.flyme.cn/resources/flymeos/v3/flyme6/animation/videoDesign/flymeUi.mp4?v=313eae54d1"></video>
-		<button class="btn1" id="btn1">点击播放1</button>
+		<video id="video1" class="video" preload="none" webkit-playsinline="true" x-webkit-airplay="true" airplay="autoplay" playsinline>
+			<source id="mp4" src="http://www.res.flyme.cn/resources/flymeos/v3/flyme6/animation/videoDesign/flymeUi.mp4?v=313eae54d1" type="video/mp4">
+		</video>
 	</div>
 	<div style="background: green;height:10px;"></div>
 	<div>
-		<video id="video2" class="video" preload="auto" webkit-playsinline="true" x5-video-player-fullscreen="true" playsinline src="http://www.res.flyme.cn/resources/flymeos/v3/flyme6/animation/videoDesign/flymeAbout.mp4?v=452f8b8598"></video>
-		<button class="btn2" id="btn2">点击播放2</button>
+		<video id="video2" class="video" preload="auto" webkit-playsinline="true" x-webkit-airplay="true" airplay="autoplay" playsinline src="http://www.res.flyme.cn/resources/flymeos/v3/flyme6/animation/videoDesign/flymeAbout.mp4?v=452f8b8598"></video>
+		<button class="btn2" id="btn2">点击播放</button>
 	</div>
-	<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>
+	<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>  -->
 	<script>
-	$(function(){
-		$('#btn1').on('click', function(){
-			$('#video1')[0].play();
-			$('#video2')[0].pause();
+	window.onload = function(){
+		var btn2 = document.getElementById('btn2'),
+			video1 = document.getElementById('video1'),
+			video2 = document.getElementById('video2');
+		btn2.addEventListener('click', function(){
+			video2.play();
 		});
-		$('#btn2').on('click', function(){
-			$('#video1')[0].pause();
-			$('#video2')[0].play();
+		video1.play();
+
+
+		WeixinJSBridge.invoke('getNetworkType', {}, function(e){
+			video1.play();
+		})
+
+		/*wx.config({
+			debug: false,
+			appId: '',
+			timestamp: 1,
+			nonceStr: '',
+			signature: '',
+			jsApiList: []
 		});
+		wx.ready(function(){
+			video1.play();
+		})*/
 
-
-
-	});
+	}
 	</script>
 </html>
