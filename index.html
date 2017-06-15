@@ -65,7 +65,7 @@
 		<video id="video2" class="video" preload="auto" webkit-playsinline="true" x-webkit-airplay="true" airplay="autoplay" playsinline src="http://www.res.flyme.cn/resources/flymeos/v3/flyme6/animation/videoDesign/flymeAbout.mp4?v=452f8b8598"></video>
 		<button class="btn2" id="btn2">点击播放</button>
 	</div>
-	<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>  -->
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script> 
 	<script>
 	window.onload = function(){
 		var btn2 = document.getElementById('btn2'),
@@ -76,12 +76,12 @@
 		});
 		video1.play();
 
+		// WeixinJSBridge.invoke('getNetworkType', {}, function(e){
+		// 	video1.play();
+		// })
+		
 
-		WeixinJSBridge.invoke('getNetworkType', {}, function(e){
-			video1.play();
-		})
-
-		/*wx.config({
+		wx.config({
 			debug: false,
 			appId: '',
 			timestamp: 1,
@@ -91,7 +91,7 @@
 		});
 		wx.ready(function(){
 			video1.play();
-		})*/
+		})
 
 	}
 	</script>
